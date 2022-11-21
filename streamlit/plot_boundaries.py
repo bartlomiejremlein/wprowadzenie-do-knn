@@ -12,7 +12,7 @@ N_NEIGHBORS = st.slider(
 
 X, y = load_iris(return_X_y=True)
 
-pca = PCA(n_components=2)
+pca = PCA(n_components=2, random_state=7)
 pca.fit(X)
 X = pca.transform(X)
 
@@ -25,6 +25,9 @@ knn.fit(X, y)
 disp = DecisionBoundaryDisplay.from_estimator(knn, X, xlabel="PC1", ylabel="PC2")
 
 disp.ax_.scatter(X[:, 0], X[:, 1], c=y, edgecolor="k")
+disp.ax_.set_title(
+    f'Granice decyzyjne dla {N_NEIGHBORS} {"sąsiadów" if N_NEIGHBORS > 1 else "sąsiada"}',
+)
 plt.tight_layout()
 plt.savefig("image", dpi=200)
 image = st.image("image.png")
