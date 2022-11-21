@@ -16,7 +16,6 @@ pca = PCA(n_components=2)
 pca.fit(X)
 X = pca.transform(X)
 
-plt.rcParams["font.family"] = "Inter"
 plt.rcParams["figure.figsize"] = (6, 3)
 plt.rcParams["image.cmap"] = "RdYlBu"
 
